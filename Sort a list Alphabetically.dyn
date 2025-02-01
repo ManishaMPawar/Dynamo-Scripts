@@ -1,0 +1,430 @@
+{
+  "Uuid": "5de0a2fc-c7f9-4dcf-9871-a2d9b50400b2",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "Sort a list Alphabetically",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "396cbfe82bd24783a1f2666b33507b18",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "88c6123a5de342b791747d64310962df",
+          "Name": "file",
+          "Description": "File representing the Excel workbook\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "159766024721462aab588420ec1b0565",
+          "Name": "sheetName",
+          "Description": "Name of the worksheet containing data\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "730e97b8a9354998912b17c489b45e35",
+          "Name": "readAsStrings",
+          "Description": "Toggle to read cells as strings\n\nbool\nDefault value : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "748b08ad991c4e63b85e9eaa0ffb1b6c",
+          "Name": "showExcel",
+          "Description": "Toggle to show excel's main window\n\nbool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e2d7e28b6ae8428e9e1197e23031f043",
+          "Name": "data",
+          "Description": "Rows of data from the Excel worksheet",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSOffice.Data.ImportExcel@var,string,bool,bool",
+      "Replication": "Auto",
+      "Description": "Read data from a Microsoft Excel spreadsheet. Data is read by row and returned in a series of lists by row. Rows and columns are zero-indexed; for example, the value in cell A1 will appear in the data list at [0,0]. This node requires Microsoft Excel to be installed.\n\nData.ImportExcel (file: var, sheetName: string, readAsStrings: bool = false, showExcel: bool = true): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "Id": "8781cd79bdc742a88b5e4226761e61ca",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "eab7a350f97b4c58933b0af0f701c4ab",
+          "Name": "path",
+          "Description": "Path to the file.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7e662477f3a741e8a0e82b59df4c02cb",
+          "Name": "file",
+          "Description": "File object",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a file object from the given path"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "Id": "22fd32a8c93c455ca3b817d92ca06db7",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d49c811ff9f942d98b5bdad327094e43",
+          "Name": "",
+          "Description": "File Path",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows you to select a file on the system and returns its file path",
+      "HintPath": "C:\\Users\\manishac\\Downloads\\Input File.xlsx",
+      "InputValue": "..\\..\\..\\Downloads\\Input File.xlsx"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "Id": "6f4217b47ebe447ba4922d0bfd43dfa2",
+      "NodeType": "StringInputNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "c306bcfea4f748569386abf399717641",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Creates a string",
+      "InputValue": "Sheet1"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "a6dfef9ab98c47849dbee55ccef5a862",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "416a35d7aea7434aa7e155abf23f4f22",
+          "Name": "list",
+          "Description": "List to flatten.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b4e3f9294c84467fba44c20effe3e809",
+          "Name": "amount",
+          "Description": "Layers of list nesting to remove (-1 will remove all list nestings)\n\nint\nDefault value : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d28b4236e06a4eb4b18d46db051348ee",
+          "Name": "list",
+          "Description": "Flattened list by amount",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Replication": "Auto",
+      "Description": "Flattens a nested list of lists by a certain amount.\n\nList.Flatten (list: var[]..[], amount: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "88144b3e-263f-4b91-bf53-52ccdd85c4ea",
+      "FunctionType": "Graph",
+      "Id": "cda18577c2774dff966adc3c9702a6cb",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "dd59396653f94b6494365b63250c11c4",
+          "Name": "list",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c8a5f5edf4794761ae7483b91c3d86b6",
+          "Name": "ascending",
+          "Description": "bool\nDefault value : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "63598e7897c94e2fabe5abb27a31adba",
+          "Name": "list",
+          "Description": "return value",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Sorts a specified list in natural order in either ascending or descending order."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "da9f91f8a4e843b7b438546b5201f007",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "81beb8c538dc451694a063aea045a75b",
+          "Name": "list",
+          "Description": "List of items to be sorted\n\nvar[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bbd1dd0583a946848546ef9eb9b0f5e7",
+          "Name": "int[]",
+          "Description": "The indices of the items in the sorted list",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.List.Sort@var[]",
+      "Replication": "Auto",
+      "Description": "Sorts a list by the items and return their indices.\n\nList.Sort (list: var[]): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "e2d7e28b6ae8428e9e1197e23031f043",
+      "End": "416a35d7aea7434aa7e155abf23f4f22",
+      "Id": "8dcf03ffc129450f890652fdb623bb34",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "7e662477f3a741e8a0e82b59df4c02cb",
+      "End": "88c6123a5de342b791747d64310962df",
+      "Id": "fb35c1948aee4c50b945300c074c409e",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d49c811ff9f942d98b5bdad327094e43",
+      "End": "eab7a350f97b4c58933b0af0f701c4ab",
+      "Id": "6682cb6277a14ad0a7e4f34988015b3a",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "c306bcfea4f748569386abf399717641",
+      "End": "159766024721462aab588420ec1b0565",
+      "Id": "a8bb4733b4f544cb80f37a3745d45b79",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d28b4236e06a4eb4b18d46db051348ee",
+      "End": "dd59396653f94b6494365b63250c11c4",
+      "Id": "f524229c90784b889387d787c8dc1cf5",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "d28b4236e06a4eb4b18d46db051348ee",
+      "End": "81beb8c538dc451694a063aea045a75b",
+      "Id": "fe47dd25db174078a6385d4ec33fcbd9",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [
+    "88144b3e-263f-4b91-bf53-52ccdd85c4ea"
+  ],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Genius Loci",
+      "Version": "2023.2.21",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "cda18577c2774dff966adc3c9702a6cb"
+      ]
+    },
+    {
+      "Name": "Input File.xlsx",
+      "ReferenceType": "External",
+      "Nodes": [
+        "22fd32a8c93c455ca3b817d92ca06db7"
+      ]
+    }
+  ],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "396cbfe82bd24783a1f2666b33507b18",
+        "Name": "Data.ImportExcel",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 856.03454441304575,
+        "Y": 220.81034097418467
+      },
+      {
+        "Id": "8781cd79bdc742a88b5e4226761e61ca",
+        "Name": "File From Path",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 575.7182834966045,
+        "Y": 221.1043677911216
+      },
+      {
+        "Id": "22fd32a8c93c455ca3b817d92ca06db7",
+        "Name": "File Path",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 249.98770895875327,
+        "Y": 221.15825288355137
+      },
+      {
+        "Id": "6f4217b47ebe447ba4922d0bfd43dfa2",
+        "Name": "String",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 628.58252883551359,
+        "Y": 392.085271962399
+      },
+      {
+        "Id": "a6dfef9ab98c47849dbee55ccef5a862",
+        "Name": "List.Flatten",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1220.4465696713248,
+        "Y": 189.54767276182665
+      },
+      {
+        "Id": "cda18577c2774dff966adc3c9702a6cb",
+        "Name": "List SortNatural",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1525.5639424168994,
+        "Y": 207.83581766922782
+      },
+      {
+        "Id": "da9f91f8a4e843b7b438546b5201f007",
+        "Name": "List.Sort",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1798.2234071285047,
+        "Y": 209.69998480523992
+      }
+    ],
+    "Annotations": [],
+    "X": -81.59025078053287,
+    "Y": 124.72556072826347,
+    "Zoom": 0.7045598350895842
+  }
+}
