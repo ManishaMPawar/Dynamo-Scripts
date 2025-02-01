@@ -1,0 +1,283 @@
+{
+  "Uuid": "33269806-e005-45db-ad22-b4df4e6f171f",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "Get the Height of a Wall Element",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "e0730ae5ab4d4c7992ae8f0aedfafa22",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "09ed5e62041840cfb5ba3b4d6e4aca0e",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e897719bed134ab3ab056d05d49c14af",
+          "Name": "parameterName",
+          "Description": "The name of the parameter whose value you want to obtain.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f08179be37474d47b4db295d4922942a",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "Revit.Elements.Element.GetParameterValueByName@string",
+      "Replication": "Auto",
+      "Description": "Get the value of one of the element's parameters.\n\nElement.GetParameterValueByName (parameterName: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 727,
+      "SelectedString": "OST_Walls",
+      "Id": "1cb7363e80014699ae9b7a6c670bf4ef",
+      "NodeType": "ExtensionNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1d07dd299bf8485fb85645a01027de7a",
+          "Name": "Category",
+          "Description": "The selected Category.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "All built-in categories."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "Id": "49070ba03e434a67b8e030b011db6951",
+      "NodeType": "ExtensionNode",
+      "Inputs": [
+        {
+          "Id": "cbacdc66793e4b7f826e1b4b49b507fe",
+          "Name": "Category",
+          "Description": "The Category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1c7c2fcdaae746e8bc776cad1489a86d",
+          "Name": "Elements",
+          "Description": "An element class.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Get all elements of the specified category from the model."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "Id": "bd57249237814aab97c3b413e7df7f55",
+      "NodeType": "CodeBlockNode",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1878a7245449482cb2b534df49ad8355",
+          "Name": "",
+          "Description": "Value of expression at line 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Allows for DesignScript code to be authored directly",
+      "Code": "\"Length\";"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "Id": "c63635dffcc94e54b7debebc9cd3cf8a",
+      "NodeType": "FunctionNode",
+      "Inputs": [
+        {
+          "Id": "ae4d3572dd604542808b8e9a0dfaf952",
+          "Name": "values",
+          "Description": "Numbers to add to sum\n\ndouble[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "da62a6e7c16943e0b56b4a7dd918008a",
+          "Name": "double",
+          "Description": "The sum of the values",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "FunctionSignature": "DSCore.Math.Sum@double[]",
+      "Replication": "Auto",
+      "Description": "Find the sum of a series of numbers\n\nMath.Sum (values: double[]): double"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "f08179be37474d47b4db295d4922942a",
+      "End": "ae4d3572dd604542808b8e9a0dfaf952",
+      "Id": "a282ec837bf54e919ffe0dcc595d8aec",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "1d07dd299bf8485fb85645a01027de7a",
+      "End": "cbacdc66793e4b7f826e1b4b49b507fe",
+      "Id": "7d6c006edaa345eb83ac22fa0664a5d2",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "1c7c2fcdaae746e8bc776cad1489a86d",
+      "End": "09ed5e62041840cfb5ba3b4d6e4aca0e",
+      "Id": "062e9c744134481f8d6e108db3818e16",
+      "IsHidden": "False"
+    },
+    {
+      "Start": "1878a7245449482cb2b534df49ad8355",
+      "End": "e897719bed134ab3ab056d05d49c14af",
+      "Id": "55c49a31dc3f48479a39bd2de1d37d50",
+      "IsHidden": "False"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.19",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "6.1",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "None",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.19.3.6394",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "_Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "ConnectorPins": [],
+    "NodeViews": [
+      {
+        "Id": "e0730ae5ab4d4c7992ae8f0aedfafa22",
+        "Name": "Element.GetParameterValueByName",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 851.913946587537,
+        "Y": 302.08625
+      },
+      {
+        "Id": "1cb7363e80014699ae9b7a6c670bf4ef",
+        "Name": "Categories",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 158.913946587537,
+        "Y": 245.08625
+      },
+      {
+        "Id": "49070ba03e434a67b8e030b011db6951",
+        "Name": "All Elements of Category",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 494.913946587537,
+        "Y": 245.08625
+      },
+      {
+        "Id": "bd57249237814aab97c3b413e7df7f55",
+        "Name": "Code Block",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 494.913946587537,
+        "Y": 392.91375
+      },
+      {
+        "Id": "c63635dffcc94e54b7debebc9cd3cf8a",
+        "Name": "Math.Sum",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "ShowGeometry": true,
+        "X": 1297.9139465875369,
+        "Y": 302.08625
+      }
+    ],
+    "Annotations": [],
+    "X": -137.13100103695081,
+    "Y": -154.71475583006622,
+    "Zoom": 1.0542982150113265
+  }
+}
